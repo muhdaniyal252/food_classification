@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <h1>Food Classifier</h1>
+    <p>Please upload image to classify</p>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <legend>Upload Here</legend>
+            {{ form.imageFile.label() }} {{ form.imageFile(class="form-control-file") }} {% if form.imageFile.errors %} {% for error in form.imageFile.errors %}
+            <span>{{ error }}</span></br>
+            {% endfor %} {% endif %} {{ form.submit }}
+        </fieldset>
+    </form>
+    {% if show %}
+    <fieldset>
+        <legend>Predictions</legend>
+        <img src="{{ url_for('static', filename=image) }}" />
+        <h3>Predecton: {{ result }}</h3>
+    </fieldset>
+    {% endif %}
+</body>
+
+</html>
