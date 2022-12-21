@@ -1,8 +1,10 @@
 # Byte-compiled / optimized / DLL files
-food_data/
+Fast Food Classification V2/
 __pycache__/
 *.py[cod]
 *$py.class
+*.h5
+*.pickle
 
 *.jpg
 *.png

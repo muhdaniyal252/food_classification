@@ -25,7 +25,7 @@ def home():
     image = None
     show = False
     if form.imageFile.data:
-        _,image = saveImage(form.imageFile.data)
-        result = make_prediction(image)
+        path,image = saveImage(form.imageFile.data)
+        result = make_prediction(path)
         show = True
     return render_template('index.html', title='Food Classifier', form=form, image=image, result=result, show=show)
