@@ -1,1 +1,1 @@
-docker run --name fdclsfr -p 5000:5000 -v /home/daniyal/working/food_classification:/home/daniyal/working/food_classification -it python:3.8-bullseye bash
+docker run --name fdclsfr --network host -v host:cont -it tensorflow/tensorflow:2.5.0 bash

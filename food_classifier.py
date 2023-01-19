@@ -1,5 +1,3 @@
-with open('kaggle.json','w') as f:
-    f.write('{"username":"muhdaniyal252","key":"dd95d9250ea49fe48af3d98ba9460f86"}')
 
 import os
 import random
@@ -11,7 +9,7 @@ import pickle
 pth = 'Fast Food Classification V2'
 
 categories = {i:j for i,j in enumerate(os.listdir(f'{pth}/Train'))}
-img_size = 250
+img_size = 200
 batch_size = 32
 input_shape = [img_size,img_size,1]
 
@@ -70,14 +68,15 @@ train_data = DataSequence(train,batch_size)
 test_data = DataSequence(test,1)
 eval_data = DataSequence(evall,batch_size)
 
-data_augmentation = tf.keras.Sequential([
-    tf.keras.layers.experimental.preprocessing.RandomFlip('horizontal',name='Random_Flip'),
-    tf.keras.layers.experimental.preprocessing.RandomRotation(0.1,name='Random_Rotation'),
-    tf.keras.layers.experimental.preprocessing.RandomZoom(0.1,name='Random_Zoom'),
-])
+# data_augmentation = tf.keras.Sequential([
+#     tf.keras.layers.experimental.preprocessing.RandomFlip('horizontal',name='Random_Flip'),
+#     tf.keras.layers.experimental.preprocessing.RandomRotation(0.1,name='Random_Rotation'),
+#     tf.keras.layers.experimental.preprocessing.RandomZoom(0.1,name='Random_Zoom'),
+# ])
+
 model = tf.keras.Sequential([
     tf.keras.layers.Input(shape=[200,200,1],name='Input_Layer'),
-    data_augmentation,
+    # data_augmentation,
 
     # tf.keras.layers.Conv2D(32,kernel_size=(3,3),name='Conv_Layer_1'),
     # tf.keras.layers.Activation('relu',name='Conv_Relu_1'),
